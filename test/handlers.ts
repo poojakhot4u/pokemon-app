@@ -1,27 +1,25 @@
-import { rest } from "msw";
+import { http, HttpResponse } from "msw";
+
+const BASE_URL = "https://pokeapi.co/api/v2";
 
 export const handlers = [
-    rest.get("https://pokeapi.co/api/v2/pokemon", (req, res, ctx) => {
-        return res(
-            ctx.json({
-                results: [
-                    { name: "bulbasaur", url: "url1" },
-                    { name: "charmander", url: "url2" },
-                ],
-            })
-        );
+    http.get(`${BASE_URL}/pokemon`, () => {
+        return HttpResponse.json({
+            results: [
+                { name: "bulbasaur", url: "url1" },
+                { name: "charmander", url: "url2" },
+            ],
+        });
     }),
 
-    rest.get("https://pokeapi.co/api/v2/pokemon/:name", (req, res, ctx) => {
-        return res(
-            ctx.json({
-                name: "bulbasaur",
-                height: 7,
-                weight: 69,
-                sprites: { front_default: "image.png" },
-                types: [{ type: { name: "grass" } }],
-                abilities: [{ ability: { name: "overgrow" } }],
-            })
-        );
+    http.get(`${BASE_URL}/pokemon/:name`, () => {
+        return HttpResponse.json({
+            name: "bulbasaur",
+            height: 7,
+            weight: 69,
+            sprites: { front_default: "image.png" },
+            types: [{ type: { name: "grass" } }],
+            abilities: [{ ability: { name: "overgrow" } }],
+        });
     }),
 ];
