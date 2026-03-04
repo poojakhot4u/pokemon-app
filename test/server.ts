@@ -1,7 +1,4 @@
-import "@testing-library/jest-dom";
-import { server } from "./server";
+import { setupServer } from "msw/node";
+import { handlers } from "./handlers";
 
-// Start MSW before all tests
-beforeAll(() => server.listen());
-afterEach(() => server.resetHandlers());
-afterAll(() => server.close());
+export const server = setupServer(...handlers);
