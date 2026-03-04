@@ -1,73 +1,54 @@
-# React + TypeScript + Vite
+﻿Pokémon Frontend Kata
+Live Demo
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+https://your-deployment-link.vercel.app
 
-Currently, two official plugins are available:
+Screenshots
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Pokémon List Page
+![Pokemon List](public/screenshots/Pokemon-list.png)
 
-## React Compiler
+### Pokémon Detail Page
+![Pokemon Detail](public/screenshots/individual-pokemon-details.png.png)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## Expanding the ESLint configuration
+Architecture Decisions
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+React + TypeScript for type safety
+Custom hooks for data fetching
+MSW for deterministic test environment
+Feature-based folder structure
+Strict TDD workflow
+GitHub Actions CI for automated validation
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Testing Strategy
+React Testing Library
+MSW for API mocking
+Tests focus on:
+User behavior
+Business logic
+Loading states
+Error states
+High coverage maintained
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Run tests:
+npm run test
+npm run coverage
+Setup Instructions
+git clone https://github.com/poojakhot4u/pokemon-app
+npm install
+npm run dev
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Trade-offs
+Used client-side filtering instead of server-side pagination for simplicity
+Fetch API instead of external data libraries to reduce abstraction
+Limited dataset to 50 Pokémon for performance
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+AI Usage Transparency
+AI was intentionally used to:
+Scaffold test cases
+Generate MSW handlers
+Draft README structure
+Validate edge cases
+All generated code was reviewed, refactored, and adjusted manually to ensure correctness and maintainability.
