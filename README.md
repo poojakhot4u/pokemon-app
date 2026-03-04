@@ -11,6 +11,9 @@ Screenshots
 ### Pokémon Detail Page
 ![Pokemon Detail](public/screenshots/individual-pokemon-details.png.png)
 
+### Test Coverage Report
+![Pokemon Detail](public/screenshots/test-coverage.png)
+
 
 Architecture Decisions
 
