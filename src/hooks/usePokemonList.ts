@@ -17,7 +17,9 @@ export function usePokemonList() {
                     setData(result.results);
                 }
             } catch (err) {
-
+                if (isMounted) {
+                    setError("Something went wrong");
+                }
             } finally {
                 if (isMounted) {
                     setLoading(false);

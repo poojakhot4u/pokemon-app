@@ -17,7 +17,9 @@ export function usePokemonDetail(name: string) {
                     setData(result);
                 }
             } catch (err) {
-
+                if (isMounted) {
+                    setError("Something went wrong");
+                }
             } finally {
                 if (isMounted) {
                     setLoading(false);
